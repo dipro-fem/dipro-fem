@@ -1,0 +1,68 @@
+import numpy as np
+
+#-----------------------------------------------------------------------------------------------------------------------
+#Node Vector declaration
+nodeVector=np.array([[],[],[]])
+#-----------------------------------------------------------------------------------------------------------------------
+#Show Node Vector
+def showNodeVector():
+    print ("--------Node Vector--------/n")
+    print(nodeVector)
+#-----------------------------------------------------------------------------------------------------------------------
+#Node Class declaration
+class node:
+    def __init__(self,x,y,z):
+        self.x=float(x)
+        self.y=float(y)
+        self.z=float(z)
+        self.vect=np.array([[self.x],[self.y],[self.z]])
+#-----------------------------------------------------------------------------------------------------------------------
+#Node Input declaration
+def nodeInput(nodeVector):
+    x = input("\nX:")
+    y = input("Y:")
+    z = input("Z:")
+    node1=node(x,y,z)
+    nodevector=np.append(nodeVector,node1.vect,axis=1)
+    return nodevector
+#-----------------------------------------------------------------------------------------------------------------------
+#1D_Element Vector declaration
+e1DVector=np.array([[],[]])
+#-----------------------------------------------------------------------------------------------------------------------
+#Show Element Vector
+def showE1DVector():
+    print ("--------Element Vector--------/n")
+    print(e1DVector)
+#-----------------------------------------------------------------------------------------------------------------------        
+#1D_Element Class declaration
+class e1D:
+    def __init__(self,start_node,end_node):
+        self.x1=start_node.x
+        self.y1=start_node.y
+        self.z1=start_node.z
+        self.x2=end_node.x
+        self.y2=end_node.y
+        self.z2=end_node.z
+        self.vect=np.array([[start_node],[end_node]])
+        #self.length=np.sqrt((self.x1-self.x2)**2+(self.y1-self.y2)**2+(self.z1-self.z2)**2)
+#-----------------------------------------------------------------------------------------------------------------------
+#Element Input declaration
+def e1DInput(e1DVector):
+    sn = input("\nStart Node:")
+    en = input("End Node:")
+    e1=e1D(sn,en)
+    e1DVector = np.append(e1DVector,e1.vect,axis=1)
+    return e1DVector
+#-----------------------------------------------------------------------------------------------------------------------
+#Node data input
+takeNode=input("\nDefine Node (Y for Yes)?\n")
+while takeNode=="Y" or "y":
+    nodeInput(nodeVector)
+    takeNode=input("\nContinue again?\n")
+#-----------------------------------------------------------------------------------------------------------------------
+ 
+print(nodeVector)
+
+
+
+
